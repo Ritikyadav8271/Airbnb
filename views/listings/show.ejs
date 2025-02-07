@@ -1,0 +1,25 @@
+<% layout("/layouts/boilerplate")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3 class="text-center mb-2">Listing Detail: <%= listing.title %></h3>
+            <div class="card show-card mx-auto">
+                <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        <b class="fs-4"> <%= listing.title %> </b><br>
+                        <span class="text-muted"><%= listing.description %></span> <br>
+                        <span class="price">&#8377; <%= listing.price %></span> <br>
+                        <span class="location"><%= listing.location %>, <%= listing.country %></span> <br>
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3 gap-3">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn">Edit</a>
+                <form action="/listings/<%= listing._id %>?_method=delete" method="post">
+                    <button class="btn btn-danger delete-btn mb-2">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

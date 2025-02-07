@@ -1,0 +1,135 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+
+}
+.nav-link{
+    color: #000000 !important;
+}
+
+/* footer */ 
+.footer{
+    background-color: rgb(230, 227, 227);
+}
+.f-info-links a{
+    text-decoration: none;
+    color:#222222;
+    
+    
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info{
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand{
+    width: 100%;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+
+  
+  
+}
+.f-info-socials i{
+    margin-right: 1rem;
+    
+}
+
+/* cardss */
+.card{
+    border: none !important;
+    border-radius: 3rem;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+
+}
+
+.card-body{
+    padding: 0;
+}
+.card-text{
+    font-weight: 400;
+}
+.listing-link{
+    text-decoration: none;
+}
+/* card Effect */
+.card-img-overlay{
+    opacity: 0;
+
+
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* show.ejs */
+.show-img{
+    height: 30vh;
+}
+
+/* show.ejs */
+.show-card{
+    padding-left: 0;
+
+}
+
+/* show page */
+body {
+    background-color: #f8f9fa;
+}
+.show-card {
+    width: 50%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.show-card:hover {
+    transform: scale(1.02);
+}
+.show-img {
+    max-height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.price {
+    font-size: 1.2rem;
+    color: #28a745;
+    font-weight: bold;
+}
+.location {
+    font-size: 1rem;
+    color: #6c757d;
+}
+.edit-btn, .delete-btn {
+    width: 100px;
+}
