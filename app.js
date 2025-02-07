@@ -6,7 +6,10 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const { title } = require("process");
+const wrapAsync = require("./utils/wrapAsync");
 const PORT = process.env.PORT || 5006;
+const wrapAsyncc = require("./utils/wrapAsync.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -30,27 +33,28 @@ app.get("/", (req, res) => {
   res.send("Hello! Ritik");
 });
 // index Routes
-app.get("/listings", async (req, res) => {
+app.get("/listings",async (req, res) => {
   const allListings = await Listing.find({});
   // console.log(allListings);
   res.render("listings/index.ejs", { allListings });
 });
 
 //  new and create routes
-app.get("/listings/new", async (req, res) => {
+app.get("/listings/new",async (req, res) => {
   res.render("listings/new.ejs");
 });
 
 // show detail rotues
-app.get("/listings/:id", async (req, res) => {
+app.get("/listings/:id",wrapAsyncc( async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/show.ejs", { listing });
-});
+}));
 
 // create toutes
-app.post("/listings", async (req, res) => {
-  const { title, description, url, price, location, country } = req.body;
+app.post("/listings",async(req, res, next) => {
+  
+    const { title, description, url, price, location, country } = req.body;
   const ob = {
     title: title,
     description: description,
@@ -65,10 +69,12 @@ app.post("/listings", async (req, res) => {
   console.log(req.body.listing);
   await newListing.save();
   res.redirect("/listings");
+  
+  
 });
 
 // edit rotues
-app.get("/listings/:id/edit", async (req, res) => {
+app.get("/listings/:id/edit",async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/edit.ejs", { listing });
@@ -92,11 +98,23 @@ app.put("/listings/:id", async (req, res) => {
 });
 
 // delet routes
-app.delete("/listings/:id", async (req, res) => {
+app.delete("/listings/:id",async (req, res) => {
   let { id } = req.params;
   let deletedList = await Listing.findByIdAndDelete(id);
   // console.log(deletedList);
   res.redirect("/listings");
+});
+
+app.all("*",(req,res,next)=>{
+  next(new ExpressError(404, "page not found"));
+});
+
+
+
+// create middleware
+app.use((err, req, res, next)=>{
+  let {statusCode=500, message="something went wrong"} = err;
+  res.status(statusCode).send(message);
 });
 
 app.listen(PORT, () => {

@@ -4,32 +4,47 @@
 
        
         <h3>Edit your listings</h3>
-        <form method="post" action="/listings/<%=listing._id%>?_method=put">
+        <form method="post" action="/listings/<%=listing._id%>?_method=put" novalidate class="needs-validation">
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input name="title" value="<%=listing.title %> " type="text" class="form-control">
+                <input name="title" value="<%=listing.title %> " type="text" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter valid Title
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">description</label>
-                <textarea name="description "  class="form-control"><%= listing.description%>  </textarea>
+                <textarea name="description "  required class="form-control"><%= listing.description%>  </textarea>
+                <div class="invalid-feedback">
+                    Please enter a short description
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input name="url" value="<%=listing.image.url%>"  class="form-control">
+                <input name="url" value="<%=listing.image.url%>"  class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter a image-url
+                </div>
             </div>
             
             <div class="row">
                 <div class="mb-3 col-md-4">
                     <label for="price" class="form-label">Price</label>
-                    <input name="price" value="<%= listing.price %>" type="number" class="form-control">
+                    <input name="price" value="<%= listing.price %>" type="number" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter a price
+                    </div>
                 </div>
 
                 <div class="mb-3 col-md-8">
                     <label for="country" class="form-label">country</label>
-                    <input name=" country" value="<%=listing.country %> " type="text" class="form-control">
+                    <input name=" country" value="<%=listing.country %> " type="text" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter a country 
+                    </div>
                 </div>
     
 
@@ -56,3 +71,5 @@
     </form>
 </div>
 </div>
+
+<script src="/js/script.js"></script>
