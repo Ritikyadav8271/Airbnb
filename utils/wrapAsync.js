@@ -1,6 +1,6 @@
 
-module.exports = (fn)=>{
-    return function(req,res,next){
+module.exports = (fu)=>{
+    return (req,res,next)=>{
         fu(req,res,next).catch(next);
     }
 }

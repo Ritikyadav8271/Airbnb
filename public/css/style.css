@@ -8,7 +8,7 @@ body{
 
 }
 .navbar{
-    height: 5rem;
+    height: 4.5rem;
     background-color: white;
 
 }
@@ -22,16 +22,19 @@ body{
 }
 .f-info-links a{
     text-decoration: none;
-    color:#222222;
+    color:#000000;
+
     
     
 }
 .f-info-links a:hover{
     text-decoration: underline;
+    background-color: #cfa2a2;
+   
 }
 .f-info{
     text-align: center;
-    height: 8rem;
+    height: 6rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -51,6 +54,7 @@ body{
   
 }
 .f-info-socials i{
+    /* margin-top: 1rem; */
     margin-right: 1rem;
     
 }
