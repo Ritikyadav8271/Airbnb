@@ -65,9 +65,10 @@ const validateReview  = (req,res,next) =>{
 // index Routes
 app.get("/listings",(async (req, res) => {
   const allListings = await Listing.find({});
-  // console.log(allListings);
+  
   res.render("listings/index.ejs", { allListings });
 }));
+
 
 //  new and create routes
 app.get("/listings/new",wrapAsync(async (req, res) => {
@@ -82,7 +83,7 @@ app.get("/listings/:id",wrapAsync(async (req, res) => {
 }));
 
 // create routes
-app.post("/listings", validateListing,wrapAsync(async(req, res, next) => {
+app.post("/listings",wrapAsync(async(req, res, next) => {
    
     const { title, description, url, price, location, country } = req.body;
     const ob = {

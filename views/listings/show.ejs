@@ -2,12 +2,12 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-8 offset-2">
-            <h3 class="text-center mb-2">Listing Detail: <%= listing.title %></h3>
+            <h3 class="text-center mb-2"><%=listing.title %></h3>
             <div class="card show-card mx-auto">
                 <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
                 <div class="card-body text-center">
                     <p class="card-text">
-                        <b class="fs-4"> <%= listing.title %> </b><br>
+                        <!-- <b class="fs-4"> <%= listing.title %> </b><br> -->
                         <span class="text-muted"><%= listing.description %></span> <br>
                         <span class="price">&#8377; <%= listing.price %></span> <br>
                         <span class="location"><%= listing.location %>, <%= listing.country %></span> <br>
